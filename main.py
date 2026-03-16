@@ -8,7 +8,8 @@ import os
 
 load_dotenv()
 FRONTEND_LOCALHOST = os.getenv("FRONTEND_LOCALHOST")
-FRONTEND_WEBSITE_URL = os.getenv("FRONTEND_WEBSITE_URL")
+FRONTEND_WEBSITE_URL_1 = os.getenv("FRONTEND_WEBSITE_URL_1")
+FRONTEND_WEBSITE_URL_2 = os.getenv("FRONTEND_WEBSITE_URL_2")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
@@ -21,7 +22,8 @@ app.add_middleware(
   CORSMiddleware,
   allow_origins=[
     FRONTEND_LOCALHOST,
-    FRONTEND_WEBSITE_URL,
+    FRONTEND_WEBSITE_URL_1,
+    FRONTEND_WEBSITE_URL_2,
   ],
   allow_credentials=True,
   allow_methods=["*"],
