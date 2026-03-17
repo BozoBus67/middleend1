@@ -5,6 +5,7 @@ from psycopg2 import errors
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
+from fastapi import HTTPException
 
 load_dotenv()
 FRONTEND_LOCALHOST = os.getenv("FRONTEND_LOCALHOST")
@@ -58,7 +59,10 @@ def signup(data: SignupData):
 
   except errors.UniqueViolation:
     conn.rollback()
-    return {"ok": False, "message": "username already exists"}
+    raise HTTPException(
+      status_code=400,
+      detail="username already exists"
+    )
 
   finally:
     cursor.close()
