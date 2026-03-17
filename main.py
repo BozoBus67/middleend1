@@ -31,10 +31,13 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+  return {"status": "ok"}
+
 class SignupData(BaseModel):
   username: str
   password: str
-
 
 @app.post("/signup")
 def signup(data: SignupData):
